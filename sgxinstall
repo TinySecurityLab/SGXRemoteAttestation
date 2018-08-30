@@ -1,0 +1,29 @@
+wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
+apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
+
+
+sudo wget https://apt.repos.intel.com/setup/intelproducts.list -O /etc/apt/sources.list.d/intelproducts.list
+
+sudo sh -c 'echo deb https://apt.repos.intel.com/ipp all main > /etc/apt/sources.list.d/intel-ipp.list'
+
+sudo apt-get update
+
+sudo apt install intel-ipp-2018.3-051
+
+
+
+source /home/u/Desktop/sgx/sgxsdk/environment
+
+编写代码，实现如下效果：
+（1）程序采用C/S架构，即分别实现server和client应用程序，可以网络通信（可以实现简化的本地通信版本）
+（2）server应用程序中包含enclaveA提供AES加密/解密服务，
+（3）client应用程序测试server程序的加密/解密接口，且包含enclaveB用于安全设置enclaveA中的AES key。
+
+提示：
+1. AES key不能明文写于enclave代码中
+2. 可以通过attestation机制认证目标enclave合法性，进而通过加密信道设置key
+3. 可以通过sgx sdk中提供的sgx_rijndael128GCM_decrypt等函数提供基本的AES加解密功能（即不用重新实现AES）
+4. 可以租用阿里云的sgx服务器“神龙”进行测试，或者其他具有sgx特性的新cpu进行测试。如果实验环境有困难，请联系老师。
+5. 可以借用docker等构建基础的sgx开发环境，基于已有docker环境也行。
+6. 不可以抄袭
+
