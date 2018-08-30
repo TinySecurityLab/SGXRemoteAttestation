@@ -1,4 +1,6 @@
-# Intel SGX Remote Attestation (Real)
+# Intel SGX Remote Attestation (Real) 
+
+`一个真正的使用网络通信的SGX Remote Attestation的演示项目`
 
 ## 一、针对SGX的研究
 ### 1.SGX 代码研究
